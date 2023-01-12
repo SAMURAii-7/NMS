@@ -1,5 +1,6 @@
 import axios from "axios";
-const apiUrl = "http://localhost:8080/api";
+// const apiUrl = "http://localhost:8080/api";
+const apiUrl = "nms-backend-production.up.railway.app/api";
 
 export async function login(email, password) {
     const res = await axios.post(`${apiUrl}/auth/signin`, {
