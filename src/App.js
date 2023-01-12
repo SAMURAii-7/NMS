@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { validate } from "./services/authServices";
 import Cookies from "universal-cookie";
+import QRCode from "./pages/QRCode";
+import Verify from "./pages/Verify";
 
 function App() {
     const cookies = new Cookies();
@@ -33,6 +35,8 @@ function App() {
                     path="/dashboard"
                     element={<Dashboard handleValidation={handleValidation} />}
                 />
+                <Route exact path="/qrcode" element={<QRCode />} />
+                <Route exact path="/verify" element={<Verify />} />
                 <Route exact path="/*" element={<NotFound />} />
             </Routes>
         </Router>
