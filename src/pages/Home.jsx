@@ -15,7 +15,7 @@ function Home({ handleValidation }) {
         password: "",
     });
 
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(true);
 
     const [loginData, setLoginData] = useState({
         email: "",
@@ -58,9 +58,9 @@ function Home({ handleValidation }) {
         setLoginData({ email: "", password: "" });
     }
 
-    function handleCheck() {
-        setIsChecked(!isChecked);
-    }
+    // function handleCheck() {
+    //     setIsChecked(!isChecked);
+    // }
 
     async function handleSignupSubmit(e) {
         e.preventDefault();
@@ -76,7 +76,10 @@ function Home({ handleValidation }) {
                     navigate("/qrcode", {
                         state: { qrCode: isSignedUp.data.secretImageUri },
                     });
-                } else navigate("/dashboard");
+                } else {
+                    alert("Signup successful! Please Login");
+                    navigate("/");
+                }
             }
         } catch (err) {
             alert("Signup failed, Please try again!");
@@ -125,6 +128,9 @@ function Home({ handleValidation }) {
                             >
                                 Click here to Register
                             </Link>
+                            <Link to="/forgot" className="link">
+                                Forgot Password
+                            </Link>
                         </form>
                     </div>
                 ) : (
@@ -155,7 +161,7 @@ function Home({ handleValidation }) {
                                 id="password"
                                 value={signupData.password}
                             />
-                            <div>
+                            {/* <div>
                                 <input
                                     placeholder="MFA"
                                     onChange={() => handleCheck()}
@@ -164,7 +170,7 @@ function Home({ handleValidation }) {
                                     checked={isChecked}
                                 />
                                 Enable Two-Factor Authentication
-                            </div>
+                            </div> */}
                             <button className="btn" type="submit">
                                 Sign Up
                             </button>

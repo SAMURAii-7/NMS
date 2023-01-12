@@ -21,10 +21,16 @@ function Verify() {
         try {
             const isLoggedIn = await verify(location.state.email, code);
             if (isLoggedIn.status >= 200 && isLoggedIn.status < 300) {
-                cookies.set("auth-token", isLoggedIn.data.token, {
-                    expires: date,
-                });
-                navigate("/dashboard");
+                if (location.state.reset)
+                    navigate("/reset", {
+                        state: { email: location.state.email },
+                    });
+                else {
+                    cookies.set("auth-token", isLoggedIn.data.token, {
+                        expires: date,
+                    });
+                    navigate("/dashboard");
+                }
             }
         } catch (err) {
             alert("Code incorrect! Please try again.");
@@ -44,7 +50,7 @@ function Verify() {
                     value={code}
                 />
                 <button className="btn" type="submit">
-                    Log In
+                    Submit
                 </button>
             </form>
         </div>

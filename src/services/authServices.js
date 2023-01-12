@@ -1,5 +1,4 @@
 import axios from "axios";
-// const apiUrl = "https://nms-production.up.railway.app/api";
 const apiUrl = "http://localhost:8080/api";
 
 export async function login(email, password) {
@@ -40,6 +39,21 @@ export async function verify(email, code) {
     const res = await axios.post(`${apiUrl}/auth/verify`, {
         email: email,
         code: code,
+    });
+    return res;
+}
+
+export async function forgotPassword(email) {
+    const res = await axios.post(`${apiUrl}/auth/forgot-password`, {
+        email: email,
+    });
+    return res;
+}
+
+export async function reset(email, password) {
+    const res = await axios.post(`${apiUrl}/auth/reset`, {
+        email: email,
+        password: password,
     });
     return res;
 }

@@ -6,6 +6,8 @@ import { validate } from "./services/authServices";
 import Cookies from "universal-cookie";
 import QRCode from "./pages/QRCode";
 import Verify from "./pages/Verify";
+import Forgot from "./pages/Forgot";
+import Reset from "./pages/Reset";
 
 function App() {
     const cookies = new Cookies();
@@ -37,6 +39,8 @@ function App() {
                 />
                 <Route exact path="/qrcode" element={<QRCode />} />
                 <Route exact path="/verify" element={<Verify />} />
+                <Route exact path="/forgot" element={<Forgot />} />
+                <Route exact path="/reset" element={<Reset />} />
                 <Route exact path="/*" element={<NotFound />} />
             </Routes>
         </Router>
