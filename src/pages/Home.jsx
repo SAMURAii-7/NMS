@@ -49,6 +49,9 @@ function Home({ handleValidation }) {
                     cookies.set("auth-token", isLoggedIn.data.token, {
                         expires: date,
                     });
+                    cookies.set("email", loginData.email, {
+                        expires: date,
+                    });
                     navigate("/dashboard");
                 }
             }

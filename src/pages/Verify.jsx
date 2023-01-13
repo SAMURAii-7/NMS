@@ -29,6 +29,9 @@ function Verify() {
                     cookies.set("auth-token", isLoggedIn.data.token, {
                         expires: date,
                     });
+                    cookies.set("email", location.state.email, {
+                        expires: date,
+                    });
                     navigate("/dashboard");
                 }
             }

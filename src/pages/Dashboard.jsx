@@ -1,23 +1,18 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Cookies from "universal-cookie";
+import ControllerList from "../components/ControllerList";
+import NavBar from "../components/NavBar";
 import Restricted from "../components/Restricted";
 
 const Dashboard = ({ handleValidation }) => {
-    const navigate = useNavigate();
     const cookies = new Cookies();
-
-    const handleLogout = () => {
-        cookies.remove("auth-token");
-        navigate("/");
-    };
 
     return typeof cookies.get("auth-token") != "undefined" ? (
         handleValidation() ? (
             <div className="dashboard-div">
-                <h1>Dashboard</h1>
-                <button className="btn" onClick={() => handleLogout()}>
-                    Logout
-                </button>
+                <NavBar />
+                <h1 className="dashboard-heading">Your Controllers</h1>
+                <ControllerList />
             </div>
         ) : (
             <Navigate to="/" />
