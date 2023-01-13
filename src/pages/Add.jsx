@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { addController } from "../services/controllerServices";
 import Cookies from "universal-cookie";
 
@@ -51,6 +52,9 @@ function Add() {
                 <button className="btn" type="submit">
                     Submit
                 </button>
+                <Link to="/dashboard" className="link-btn2">
+                    Go Back
+                </Link>
             </form>
         </div>
     );
