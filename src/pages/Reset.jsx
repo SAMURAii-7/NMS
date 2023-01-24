@@ -26,7 +26,7 @@ function Reset() {
 
     return (
         <form className="loginForm" onSubmit={(e) => handleResetSubmit(e)}>
-            <p>Enter your Password</p>
+            <p>Enter the New Password</p>
             <input
                 placeholder="Password"
                 onChange={(e) => handlePasswordChange(e)}
